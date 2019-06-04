@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "socks-proxy-agent": "^4.0.2",
+    "telegraf": "^3.30.1"
+  }
+}
