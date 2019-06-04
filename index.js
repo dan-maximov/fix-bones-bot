@@ -7,6 +7,9 @@ const bot = new Telegraf(process.env.BOT_TOKEN, {
   },
 });
 
+let antiStaxTimeout;
+let structumTimeout;
+
 bot.start(ctx => ctx.reply('Welcome!'));
 bot.command('q', ({ update, reply }) => {
   if (update.message.chat.type !== 'private') {
@@ -15,12 +18,24 @@ bot.command('q', ({ update, reply }) => {
 
   reply('good morning');
 
-  setTimeout(() => {
+  antiStaxTimeout = setTimeout(() => {
     reply('Antistax');
   }, 7200000); //2hrs after awakeing
 
-  setTimeout(() => {
+  structumTimeout = setTimeout(() => {
     reply('Structum');
   }, 25200000); // 7hrs after awakeing
 });
+
+bot.command('reset', ({ update, reply }) => {
+  if (update.message.chat.type !== 'private') {
+    return;
+  }
+
+  reply('ok, clear all timeouts');
+
+  clearTimeout(antiStaxTimeout);
+  clearTimeout(structumTimeout);
+});
+
 bot.launch();
