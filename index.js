@@ -10,7 +10,6 @@ const bot = new Telegraf(process.env.BOT_TOKEN, {
 let antiStaxTimeout;
 let structumTimeout;
 
-bot.start(ctx => ctx.reply('Welcome!'));
 bot.command('q', ({ update, reply }) => {
   if (update.message.chat.type !== 'private') {
     return;
